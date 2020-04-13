@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>CKEditor 圖片上傳</title>
-    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 </head>
 <body>
 <textarea name="editor1"></textarea>
