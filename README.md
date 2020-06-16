@@ -22,11 +22,8 @@ $ php artisan key:generate
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/PLPsJeZ.png)
+![](https://i.imgur.com/Gm1L0IW.png)
 > 選擇你要上傳的檔案
 
-![](https://i.imgur.com/QAnAcEn.png)
-> 一旦文件上傳成功，使用者就會看到上傳成功訊息
-
-![](https://i.imgur.com/YDulxkU.png)
-> 寬度設定可以透過寬度屬性來處理，通常寬度還會搭配高度來制定圖片的大小，單純的只用寬度，瀏覽器會保持圖片的長寬比例呈現，但如果加上高度屬性，則圖片比例可能會有所改變
+![](https://i.imgur.com/nNBs922.png)
+> 將圖片儲存並返回圖片網址
