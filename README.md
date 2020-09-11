@@ -1,4 +1,4 @@
-# Laravel 7 上傳圖片 CKEditor 整合
+# Laravel 8 上傳圖片 CKEditor 整合
 
 整合 CKEditor 上傳圖片讓編輯器可上傳檔案甚至直瀏覽伺器服中的檔案。
 
