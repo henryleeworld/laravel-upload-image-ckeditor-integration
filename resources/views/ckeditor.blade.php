@@ -10,8 +10,8 @@
     </head>
     <body>
         <div id="editor"></div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/translations/zh.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/translations/zh.js"></script>
         <script type="text/javascript">
             class MyUploadAdapter {
                 constructor(loader) {
