@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CKEditor 圖片上傳</title>
+        <title>{{ config('app.name') }}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
             .ck-editor__editable_inline {
                min-height: 500px;
@@ -9,9 +10,22 @@
         </style>
     </head>
     <body>
-        <div id="editor"></div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/translations/zh.js"></script>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 mt-5">
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            <h6 class="text-white">{{ __('CKEditor image upload') }}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="editor"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/translations/zh.js"></script>
         <script type="text/javascript">
             class MyUploadAdapter {
                 constructor(loader) {
