@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <title>{{ config('app.name') }}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,8 +24,8 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/translations/zh.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/translations/zh.js"></script>
         <script type="text/javascript">
             class MyUploadAdapter {
                 constructor(loader) {
