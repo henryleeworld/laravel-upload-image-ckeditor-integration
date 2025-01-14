@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'ckeditor' => [
+        'key' => env('CDEDITOR_LICENSE_KEY'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

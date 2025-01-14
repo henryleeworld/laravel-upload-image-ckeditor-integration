@@ -3,6 +3,7 @@
     <head>
         <title>{{ config('app.name') }}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css">
         <style>
             .ck-editor__editable_inline {
                min-height: 500px;
@@ -24,9 +25,10 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/translations/zh.js"></script>
-        <script type="text/javascript">
+        <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/translations/zh.umd.js" defer></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js" defer></script>
+        <script type="module">
+            const {Bold, ClassicEditor, Essentials, Font, Image, ImageUpload, Italic, Paragraph} = CKEDITOR;
             class MyUploadAdapter {
                 constructor(loader) {
                     // The file loader instance to use during the upload.
@@ -35,27 +37,24 @@
 
                 // Starts the upload process.
                 upload() {
-                    return this.loader.file.then(
-                        (file) =>
-                            new Promise((resolve, reject) => {
-                                this._initRequest();
-                                this._initListeners(resolve, reject, file);
-                                this._sendRequest(file);
-                            })
-                    );
+                    return this.loader.file
+                        .then( file => new Promise((resolve, reject) => {
+                            this._initRequest();
+                            this._initListeners(resolve, reject, file);
+                            this._sendRequest(file);
+                        }));
                 }
 
                 // Aborts the upload process.
                 abort() {
-                    if (this.xhr) {
+                    if ( this.xhr ) {
                         this.xhr.abort();
                     }
                 }
 
                 // Initializes the XMLHttpRequest object using the URL passed to the constructor.
                 _initRequest() {
-                    const xhr = (this.xhr = new XMLHttpRequest());
-
+                    const xhr = this.xhr = new XMLHttpRequest();
                     // Note that your request may look different. It is up to you and your editor
                     // integration to choose the right communication channel. This example uses
                     // a POST request with JSON as a data structure but your configuration
@@ -65,14 +64,14 @@
                 }
 
                 // Initializes XMLHttpRequest listeners.
-                _initListeners(resolve, reject, file) {
+                _initListeners(resolve, reject, file ) {
                     const xhr = this.xhr;
                     const loader = this.loader;
-                    const genericErrorText = `Couldn't upload file: ${file.name}.`;
+                    const genericErrorText = `Couldn't upload file: ${ file.name }.`;
 
-                    xhr.addEventListener("error", () => reject(genericErrorText));
-                    xhr.addEventListener("abort", () => reject());
-                    xhr.addEventListener("load", () => {
+                    xhr.addEventListener('error', () => reject( genericErrorText ) );
+                    xhr.addEventListener('abort', () => reject() );
+                    xhr.addEventListener('load', () => {
                         const response = xhr.response;
 
                         // This example assumes the XHR server's "response" object will come with
@@ -82,7 +81,7 @@
                         // Your integration may handle upload errors in a different way so make sure
                         // it is done properly. The reject() function must be called when the upload fails.
                         if (!response || response.error) {
-                            return reject(response && response.error ? response.error.message : genericErrorText);
+                            return reject( response && response.error ? response.error.message : genericErrorText );
                         }
 
                         // If the upload is successful, resolve the upload promise with an object containing
@@ -90,7 +89,7 @@
                         // This URL will be used to display the image in the content. Learn more in the
                         // UploadAdapter#upload documentation.
                         resolve({
-                            default: response.url,
+                            default: response.url
                         });
                     });
 
@@ -98,7 +97,7 @@
                     // properties which are used e.g. to display the upload progress bar in the editor
                     // user interface.
                     if (xhr.upload) {
-                        xhr.upload.addEventListener("progress", (evt) => {
+                        xhr.upload.addEventListener('progress', evt => {
                             if (evt.lengthComputable) {
                                 loader.uploadTotal = evt.total;
                                 loader.uploaded = evt.loaded;
@@ -108,11 +107,11 @@
                 }
 
                 // Prepares the data and sends the request.
-                _sendRequest(file) {
+                _sendRequest( file ) {
                     // Prepare the form data.
                     const data = new FormData();
 
-                    data.append("upload", file);
+                    data.append( 'upload', file );
 
                     // Important note: This is the right place to implement security mechanisms
                     // like authentication and CSRF protection. For instance, you can use
@@ -120,7 +119,7 @@
                     // the CSRF token generated earlier by your application.
 
                     // Send the request.
-                    this.xhr.send(data);
+                    this.xhr.send( data );
                 }
             }
 
@@ -132,35 +131,35 @@
             }
 
             ClassicEditor.create(document.querySelector("#editor"), {
-                heading: {
-                    options: [
-                        {
-                            model: "paragraph",
-                            title: "Paragraph",
-                            class: "ck-heading_paragraph",
-                        },
-                        {
-                            model: "heading1",
-                            view: "h1",
-                            title: "Heading 1",
-                            class: "ck-heading_heading1",
-                        },
-                        {
-                            model: "heading2",
-                            view: "h2",
-                            title: "Heading 2",
-                            class: "ck-heading_heading2",
-                        },
-                    ],
+                licenseKey: '{{ config('services.ckeditor.key') }}',
+                plugins: [
+                    Bold,
+                    Essentials,
+                    Font,
+                    Image,
+                    ImageUpload,
+                    Italic,
+                    MyCustomUploadAdapterPlugin,
+                    Paragraph,
+                ],
+                toolbar: [
+                    'undo', 'redo',
+                    '|',
+                    'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                    '|',
+                    'bold', 'italic',
+                    '|',
+                    'uploadImage',
+                ],
+                language: {
+                    ui: 'zh'
                 },
-                language: "zh",
-                extraPlugins: [MyCustomUploadAdapterPlugin],
             })
-            .then((editor) => {
+            .then(editor => {
                 window.editor = editor;
             })
-            .catch((error) => {
-                console.error(error);
+            .catch(error => {
+                console.log(error);
             });
         </script>
     </body>
