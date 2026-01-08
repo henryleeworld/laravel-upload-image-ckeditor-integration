@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class CkeditorController extends Controller
 {
     /**
-     * success response method.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -17,9 +15,7 @@ class CkeditorController extends Controller
     }
   
     /**
-     * success response method.
-     *
-     * @return \Illuminate\Http\Response
+     * Upload the image for the user.
      */
     public function upload(Request $request)
     {
