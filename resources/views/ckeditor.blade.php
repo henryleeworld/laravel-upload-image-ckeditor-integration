@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <title>{{ config('app.name') }}</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css">
+        <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/48.0.0/ckeditor5.css">
         <style>
             .ck-editor__editable_inline {
                min-height: 500px;
@@ -25,8 +25,8 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/translations/zh.umd.js" defer></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js" defer></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/48.0.0/translations/zh.umd.js" defer></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/48.0.0/ckeditor5.umd.js" defer></script>
         <script type="module">
             const {Bold, ClassicEditor, Essentials, Font, Image, ImageUpload, Italic, Paragraph} = CKEDITOR;
             class MyUploadAdapter {

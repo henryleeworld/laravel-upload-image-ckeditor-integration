@@ -1,4 +1,4 @@
-# Laravel 12 上傳圖片 CKEditor 整合
+# Laravel 13 上傳圖片 CKEditor 整合
 
 整合 CKEditor 上傳圖片讓編輯器可上傳檔案甚至直瀏覽伺器服中的檔案。
 
@@ -26,5 +26,5 @@ $ php artisan migrate
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/pjIydhE.png)
+![](https://i.imgur.com/2iWVpvf.png)
 > HTML 編輯器的介面其實長得很像 Word，有各種按鈕讓你設定跟編輯文字的外觀
